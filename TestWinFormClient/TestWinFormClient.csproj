@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{431188CE-C1E8-4019-9BF0-6F971ED82805}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestWinFormClient</RootNamespace>
+    <AssemblyName>TestWinFormClient</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.SocketBase, Version=1.6.4.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\SuperSocket\Net40\SuperSocket.SocketBase.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.SocketEngine">
+      <HintPath>..\References\SuperSocket\Net40\SuperSocket.SocketEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChatForm.Designer.cs">
+      <DependentUpon>ChatForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ChatForm.resx">
+      <DependentUpon>ChatForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Content Include="Config\log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="App.config" />
+    <None Include="Config\log4net.unix.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SuperSocket.ClientEngine.Common.Extend\SuperSocket.ClientEngine.Common.Extend.csproj">
+      <Project>{075ae2e5-78b9-4404-84c9-702b3b71c6a2}</Project>
+      <Name>SuperSocket.ClientEngine.Common.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SuperSocket.ClientEngine.Core.Extend\SuperSocket.ClientEngine.Core.Extend.csproj">
+      <Project>{950e767d-a92b-4b24-9176-aff38ac2571d}</Project>
+      <Name>SuperSocket.ClientEngine.Core.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SuperSocket.Common.Extend\SuperSocket.Common.Extend.csproj">
+      <Project>{57fa7df0-e43c-4766-b5f3-8dae4327aee2}</Project>
+      <Name>SuperSocket.Common.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SuperSocket.SocketBase.Extend\SuperSocket.SocketBase.Extend.csproj">
+      <Project>{8a89dae6-b4d7-428b-afd1-bfec0c2d2333}</Project>
+      <Name>SuperSocket.SocketBase.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TransferClientLib\TransferClientLib.csproj">
+      <Project>{0810079b-e7ab-4087-82d5-896e5b41b050}</Project>
+      <Name>TransferClientLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TransferCommon\TransferCommon.csproj">
+      <Project>{69b24375-2673-45bf-bbdd-ec69c3d44dac}</Project>
+      <Name>TransferCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserClientLib\UserClientLib.csproj">
+      <Project>{2d3f5361-e540-4f2e-9cb4-f5c133b022b1}</Project>
+      <Name>UserClientLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserClientServerLib\UserClientServerLib.csproj">
+      <Project>{709ec89c-2090-4ef1-966c-45089de5b714}</Project>
+      <Name>UserClientServerLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserCommon\UserCommon.csproj">
+      <Project>{40d8c41a-18e0-49cf-b343-d96d53d158f8}</Project>
+      <Name>UserCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

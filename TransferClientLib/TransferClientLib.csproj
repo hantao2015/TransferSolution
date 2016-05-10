@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0810079B-E7AB-4087-82D5-896E5B41B050}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TransferClientLib</RootNamespace>
+    <AssemblyName>TransferClientLib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\References\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine.Common">
+      <HintPath>..\References\SuperSocket.ClientEngine\SuperSocket.ClientEngine.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine.Core">
+      <HintPath>..\References\SuperSocket.ClientEngine\SuperSocket.ClientEngine.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine.Protocol">
+      <HintPath>..\References\SuperSocket.ClientEngine\SuperSocket.ClientEngine.Protocol.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine.Proxy">
+      <HintPath>..\References\SuperSocket.ClientEngine\SuperSocket.ClientEngine.Proxy.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ITransferEngine.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransferEngine.cs" />
+    <Compile Include="TransferEngineFactory.cs" />
+    <Compile Include="TransferEventArgs.cs" />
+    <Compile Include="UpLoad\Command\DoExists.cs" />
+    <Compile Include="UpLoad\Command\DoStop.cs" />
+    <Compile Include="UpLoad\Command\DoUpLoad.cs" />
+    <Compile Include="UpLoad\Command\UpLoadCommandBase.cs" />
+    <Compile Include="TransferCommandInfo.cs" />
+    <Compile Include="UpLoad\UpLoadClientEngine.cs" />
+    <Compile Include="UpLoad\UpLoadReader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SuperSocket.ClientEngine.Common.Extend\SuperSocket.ClientEngine.Common.Extend.csproj">
+      <Project>{075ae2e5-78b9-4404-84c9-702b3b71c6a2}</Project>
+      <Name>SuperSocket.ClientEngine.Common.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SuperSocket.ClientEngine.Core.Extend\SuperSocket.ClientEngine.Core.Extend.csproj">
+      <Project>{950e767d-a92b-4b24-9176-aff38ac2571d}</Project>
+      <Name>SuperSocket.ClientEngine.Core.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tool\Tool.csproj">
+      <Project>{0b66bbde-e5e4-4b37-bb20-b53ec61865fb}</Project>
+      <Name>Tool</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TransferCommon\TransferCommon.csproj">
+      <Project>{69b24375-2673-45bf-bbdd-ec69c3d44dac}</Project>
+      <Name>TransferCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DownLoad\Command\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
